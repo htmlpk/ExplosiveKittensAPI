@@ -2,6 +2,7 @@ using ExplosiveKittens.VewModels;
 using ExplosiveKittensAPI.Hub;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using System.Security.Cryptography.Xml;
 
 namespace ExplosiveKittensAPI.Controllers
 {
@@ -10,9 +11,9 @@ namespace ExplosiveKittensAPI.Controllers
     public class ExplosiveKittensGameController : ControllerBase
     {
 
-        private readonly IHubContext<ExplosiveKittensHub> _hub;
+        private readonly IHubContext<ExplosiveKittensHub, ISomeHub> _hub;
 
-        public ExplosiveKittensGameController(IHubContext<ExplosiveKittensHub> hub)
+        public ExplosiveKittensGameController(IHubContext<ExplosiveKittensHub, ISomeHub> hub)
         {
             _hub = hub;
         }
@@ -22,7 +23,26 @@ namespace ExplosiveKittensAPI.Controllers
         public async Task<IActionResult> Test()
         {
             var model = new CardViewModel();
-            await _hub.Clients.All.SendAsync("transfer", model);
+            await _hub.Clients.All.SomeMethodB(model);
+
+            var g2 = new Card();
+            await _hub.Clients.All.BroadcastChartData(g2);
+
+            await _hub.Clients.All.qse(model);
+
+            //await _hub.Clients.All.SendAsync("qwe", model);
+            return Ok(new { Message = "Test Request Completed" });
+        }
+
+        [HttpGet]
+        [Route("test2/{connectionId}")]
+        public async Task<IActionResult> Test2(string connectionId)
+        {
+            var model = new CardViewModel();
+
+            await _hub.Clients.Client(connectionId).qse(model);
+
+            //await _hub.Clients.All.SendAsync("qwe", model);
             return Ok(new { Message = "Test Request Completed" });
         }
 

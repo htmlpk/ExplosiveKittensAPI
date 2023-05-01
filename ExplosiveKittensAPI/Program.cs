@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowCredentials());
 });
-builder.Services.AddSignalR();
+builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -24,6 +24,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -34,10 +35,17 @@ app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
-app.MapHub<ExplosiveKittensHub>("/explosive-kittens-hub");
+app.UseRouting();
 
-app.UseSwaggerUI();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<ExplosiveKittensHub>("/explosive-kittens-hub");
+    endpoints.MapSwagger();
+});
 
-app.MapControllers();
+//app.UseSwaggerUI();
+
+//app.MapControllers();
 
 app.Run();

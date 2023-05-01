@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplosiveKittens.VewModels.Base
 {
@@ -14,7 +10,7 @@ namespace ExplosiveKittens.VewModels.Base
 
         public BaseViewModel()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             CreatedDate = new DateTime();   
         }
     }
