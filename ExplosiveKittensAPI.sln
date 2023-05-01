@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplosiveKittens.VewModels"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplosiveKittens.Data", "ExplosiveKittens.Data\ExplosiveKittens.Data.csproj", "{963FFB93-64A1-4BC5-9238-6BD9B9CA9BB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplosiveKittens.Business", "ExplosiveKittens.Business\ExplosiveKittens.Business.csproj", "{7E402D73-28D2-4C9F-AB38-CA202C07E633}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{963FFB93-64A1-4BC5-9238-6BD9B9CA9BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{963FFB93-64A1-4BC5-9238-6BD9B9CA9BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{963FFB93-64A1-4BC5-9238-6BD9B9CA9BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E402D73-28D2-4C9F-AB38-CA202C07E633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E402D73-28D2-4C9F-AB38-CA202C07E633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E402D73-28D2-4C9F-AB38-CA202C07E633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E402D73-28D2-4C9F-AB38-CA202C07E633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
