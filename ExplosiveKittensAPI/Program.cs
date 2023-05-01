@@ -1,3 +1,4 @@
+using ExplosiveKittens.Business.HostedServices;
 using ExplosiveKittensAPI.Hub;
 
 var builder = WebApplication.CreateBuilder(args);
