@@ -5,7 +5,7 @@ using ExplosiveKittens.Data.Entities.Base;
 
 namespace ExplosiveKittens.Data.Entities
 {
-    public class Card : BaseEntity,Ie
+    public class Card : BaseEntity
     {
 
         [Indexed]

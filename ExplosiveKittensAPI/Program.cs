@@ -1,5 +1,8 @@
 using ExplosiveKittens.Business.HostedServices;
+using ExplosiveKittens.Business.Interfaces;
+using ExplosiveKittens.Business.Services;
 using ExplosiveKittensAPI.Hub;
+using Redis.OM;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,8 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
 builder.Services.AddHostedService<IndexCreationService>();
+builder.Services.AddSingleton(new RedisConnectionProvider(builder.Configuration["REDIS_CONNECTION_STRING"]));
+builder.Services.AddSingleton<IKittenGameService,KittensGameService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -49,9 +49,7 @@ namespace ExplosiveKittensAPI.Hub
         }
     }
 
-
-
-}
+ }
 
 public class Card
 {

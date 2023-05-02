@@ -51,39 +51,39 @@ namespace ExplosiveKittens.Business
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Defuse });
             }
-            for (int i = 0; i < Deck.GoAwayCount - 1; i++)
+            for (int i = 0; i < GoAwayCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.GoAvay });
             }
-            for (int i = 0; i < Deck.AskCount - 1; i++)
+            for (int i = 0; i < AskCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Ask });
             }
-            for (int i = 0; i < Deck.AttackCount - 1; i++)
+            for (int i = 0; i < AttackCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Attack });
             }
-            for (int i = 0; i < Deck.ShuffleCount - 1; i++)
+            for (int i = 0; i < ShuffleCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Shuffle });
             }
-            for (int i = 0; i < Deck.SikotCount - 1; i++)
+            for (int i = 0; i < SikotCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Sikot });
             }
-            for (int i = 0; i < Deck.MotherCount - 1; i++)
+            for (int i = 0; i < MotherCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Mother });
             }
-            for (int i = 0; i < Deck.ZombieCount - 1; i++)
+            for (int i = 0; i < ZombieCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Zombie });
             }
-            for (int i = 0; i < Deck.BikiniCount - 1; i++)
+            for (int i = 0; i < BikiniCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Bikini });
             }
-            for (int i = 0; i < Deck.ShredingerCount - 1; i++)
+            for (int i = 0; i < ShredingerCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Shredinger });
             }
@@ -107,39 +107,39 @@ namespace ExplosiveKittens.Business
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Defuse });
             }
-            for (int i = 0; i < Deck.GoAwayCount - 1; i++)
+            for (int i = 0; i < GoAwayCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.GoAvay });
             }
-            for (int i = 0; i < Deck.AskCount - 1; i++)
+            for (int i = 0; i < AskCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Ask });
             }
-            for (int i = 0; i < Deck.AttackCount - 1; i++)
+            for (int i = 0; i < AttackCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Attack });
             }
-            for (int i = 0; i < Deck.ShuffleCount - 1; i++)
+            for (int i = 0; i < ShuffleCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Shuffle });
             }
-            for (int i = 0; i < Deck.SikotCount - 1; i++)
+            for (int i = 0; i < SikotCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Sikot });
             }
-            for (int i = 0; i < Deck.MotherCount - 1; i++)
+            for (int i = 0; i < MotherCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Mother });
             }
-            for (int i = 0; i < Deck.ZombieCount - 1; i++)
+            for (int i = 0; i < ZombieCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Zombie });
             }
-            for (int i = 0; i < Deck.BikiniCount - 1; i++)
+            for (int i = 0; i < BikiniCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Bikini });
             }
-            for (int i = 0; i < Deck.ShredingerCount - 1; i++)
+            for (int i = 0; i < ShredingerCount - 1; i++)
             {
                 deck.Add(new Card { Id = Guid.NewGuid(), Type = Data.Enums.KittenType.Shredinger });
             }
