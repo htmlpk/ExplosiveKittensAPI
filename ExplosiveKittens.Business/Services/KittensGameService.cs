@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using ExplosiveKittens.Business.Interfaces;
+using System.Linq;
 
 namespace ExplosiveKittens.Business.Services
 {
@@ -39,8 +40,9 @@ namespace ExplosiveKittens.Business.Services
         {
             try
             {
-                var cards = await _deck.ToListAsync();
-                return cards;
+                var deck = await _deck.ToListAsync();
+                var cards = deck.Where(x=>x.GameId.Equals(gameId)).FirstOrDefault();
+                return deck;
             }
             catch (Exception e)
             {
