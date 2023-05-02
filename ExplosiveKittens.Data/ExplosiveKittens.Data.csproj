@@ -104,7 +104,10 @@
     <Compile Include="Entities\Base\IEntity.cs" />
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Deck.cs" />
+    <Compile Include="Entities\GamePlayer.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Enums\KittenType.cs" />
+    <Compile Include="Enums\PlayerStatusType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

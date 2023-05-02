@@ -3,6 +3,7 @@ using ExplosiveKittens.Business.Interfaces;
 using ExplosiveKittens.Business.Services;
 using ExplosiveKittensAPI.Hub;
 using Redis.OM;
+using Redis.OM.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 

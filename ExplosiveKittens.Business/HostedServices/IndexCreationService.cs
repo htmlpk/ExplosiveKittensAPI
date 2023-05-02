@@ -16,6 +16,7 @@ namespace ExplosiveKittens.Business.HostedServices
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             await _provider.Connection.CreateIndexAsync(typeof(Deck));
+            await _provider.Connection.CreateIndexAsync(typeof(GamePlayer));
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
