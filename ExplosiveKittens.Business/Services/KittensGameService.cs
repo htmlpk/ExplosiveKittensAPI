@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ExplosiveKittens.Business.Services
 {
-    public class KittensGameService:IKittenGameService
+    public class KittensGameService:IKittensGameService
     {
         private readonly RedisCollection<Deck> _deck;
         private readonly RedisConnectionProvider _provider;
@@ -53,3 +53,4 @@ namespace ExplosiveKittens.Business.Services
         }
     }
 }
+

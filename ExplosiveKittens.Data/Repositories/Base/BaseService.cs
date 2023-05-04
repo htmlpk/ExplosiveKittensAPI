@@ -1,20 +1,18 @@
-﻿using ExplosiveKittens.Business.Interfaces.Base;
-using ExplosiveKittens.Data.Entities;
+﻿using ExplosiveKittens.Data.Entities.Base;
+using ExplosiveKittens.Data.Interfaces.Base;
 using Redis.OM;
 using Redis.OM.Searching;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ExplosiveKittens.Business.Services
+namespace ExplosiveKittens.Data.Repositories
 {
-    public  abstract class BaseService<T>:IBaseService<T> where T : class
+    public  abstract class BaseRepository<T>:IBaseRepository<T> where T : BaseEntity
     {
         protected readonly RedisCollection<T> _repo;
         protected readonly RedisConnectionProvider _provider;
-        public BaseService(RedisConnectionProvider provider)
+        public BaseRepository(RedisConnectionProvider provider)
         {
             _provider = provider;
             _repo = (RedisCollection<T>)provider.RedisCollection<T>();

@@ -11,7 +11,11 @@ namespace ExplosiveKittens.Data.Entities
     public class Player:BaseEntity
     {
         [Indexed]
-        public string Email { get; set; }
+        public string UserId { get; set; }
+
+        [Indexed]
+        public string ConnectionId { get; set; }   
+        
         [Indexed]
         public int Order { get; set; }
     }

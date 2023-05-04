@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ExplosiveKittens.Business.Interfaces
 {
-    public interface IKittenGameService
+    public interface IKittensGameService
     {
         Task CreateDeckInCacheAsync();
         Task<IList<Deck>> GetDeckAsync(Guid gameId);

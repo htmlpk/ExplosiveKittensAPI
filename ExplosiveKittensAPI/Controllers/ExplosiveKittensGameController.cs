@@ -3,7 +3,6 @@ using ExplosiveKittens.VewModels;
 using ExplosiveKittensAPI.Hub;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using System.Security.Cryptography.Xml;
 
 namespace ExplosiveKittensAPI.Controllers
 {
@@ -13,9 +12,9 @@ namespace ExplosiveKittensAPI.Controllers
     {
 
         private readonly IHubContext<ExplosiveKittensHub, ISomeHub> _hub;
-        private readonly IKittenGameService _gameService;
+        private readonly IKittensGameService _gameService;
 
-        public ExplosiveKittensGameController(IHubContext<ExplosiveKittensHub, ISomeHub> hub, IKittenGameService gameService)
+        public ExplosiveKittensGameController(IHubContext<ExplosiveKittensHub, ISomeHub> hub, IKittensGameService gameService)
         {
             _hub = hub;
             _gameService = gameService;

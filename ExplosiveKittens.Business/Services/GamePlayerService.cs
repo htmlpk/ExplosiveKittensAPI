@@ -1,18 +1,27 @@
 ﻿using ExplosiveKittens.Business.Interfaces;
 using ExplosiveKittens.Data.Entities;
-using Redis.OM;
+using ExplosiveKittens.Data.Enums;
+using ExplosiveKittens.Data.Repositories;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ExplosiveKittens.Business.Services
 {
-    public class GamePlayerService: BaseService<GamePlayer>,IGamePlayerService<GamePlayer>
+    internal class GamePlayerService: IGamePlayerService
     {
-        public GamePlayerService(RedisConnectionProvider provider)
-            :base(provider)
+        private GamePlayerRepository _gamePlayerCacheRepo;
+        public GamePlayerService(GamePlayerRepository repo)
         {
+            _gamePlayerCacheRepo = repo;
         }
 
-        public void qwe()
+        public async Task<Guid?> GetGameByUserId(Guid userId)
         {
+            Game game = _gamePlayerCacheRepo.GetBy(x => x.Players.Any(y => y.UserId.Equals(userId))).FirstOrDefault();
+            return game?.Id;
         }
+
+        public async Task<Game> Create(GameType)
     }
 }

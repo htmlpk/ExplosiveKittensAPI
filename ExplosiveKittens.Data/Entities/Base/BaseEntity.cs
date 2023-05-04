@@ -5,7 +5,7 @@ namespace ExplosiveKittens.Data.Entities.Base
 {
     public class BaseEntity:IEntity
     {
-        [RedisIdField]
+        [RedisField]
         [Indexed]
         public Guid Id { get; set; }
         [Indexed]
