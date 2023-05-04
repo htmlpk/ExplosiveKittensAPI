@@ -10,15 +10,15 @@ namespace ExplosiveKittens.Business
     {
         public static void ConfigureRepositories(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IDeckRepository,DeckRepository>();
-            serviceCollection.AddScoped<IGamePlayerRepository, GamePlayerRepository>();
+            serviceCollection.AddTransient<IDeckRepository,DeckRepository>();
+            serviceCollection.AddTransient<IGamePlayerRepository, GamePlayerRepository>();
         }
 
         public static void ConfigureServices(IServiceCollection serviceCollection)
         {
             Startup.ConfigureRepositories(serviceCollection);
-            serviceCollection.AddScoped<IGamePlayerService, GamePlayerService>();
-            serviceCollection.AddScoped<IKittensGameService, KittensGameService>();
+            serviceCollection.AddSingleton<IGamePlayerService, GamePlayerService>();
+            serviceCollection.AddSingleton<IKittensGameService, KittensGameService>();
         }
 
 

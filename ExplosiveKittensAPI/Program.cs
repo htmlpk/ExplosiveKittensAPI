@@ -3,6 +3,7 @@ using ExplosiveKittens.Business.HostedServices;
 using ExplosiveKittens.Business.Interfaces;
 using ExplosiveKittensAPI.Hub;
 using Redis.OM;
+using Redis.OM.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddCors(options =>
         .AllowCredentials());
 });
 builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
-builder.Services.AddHostedService<IndexCreationService>();
+builder.Services.AddHostedService<IHostedService,IndexCreationService>();
 builder.Services.AddSingleton(new RedisConnectionProvider(builder.Configuration["REDIS_CONNECTION_STRING"]));
 Startup.ConfigureServices(builder.Services);
 

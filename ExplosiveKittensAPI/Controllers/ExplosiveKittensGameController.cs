@@ -44,8 +44,6 @@ namespace ExplosiveKittensAPI.Controllers
             var model = new CardViewModel();
             await _hub.Clients.All.SomeMethodB(model);
 
-            await _hub.Clients.All.BroadcastChartData(g2);
-
             await _hub.Clients.All.qse(model);
 
             //await _hub.Clients.All.SendAsync("qwe", model);

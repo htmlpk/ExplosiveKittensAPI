@@ -1,11 +1,12 @@
 ﻿using ExplosiveKittens.Data.Entities;
+using Microsoft.Extensions.Hosting;
 using Redis.OM;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ExplosiveKittens.Business.HostedServices
 {
-    public class IndexCreationService : Microsoft.Extensions.Hosting.IHostedService
+    public class IndexCreationService : IHostedService
     {
         private readonly RedisConnectionProvider _provider;
         public IndexCreationService(RedisConnectionProvider provider)

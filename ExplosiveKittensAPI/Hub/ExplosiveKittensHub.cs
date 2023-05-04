@@ -16,12 +16,14 @@ namespace ExplosiveKittensAPI.Hub
     {
 
         private readonly IGamePlayerService playerService;
-        public ExplosiveKittensHub(IGamePlayerService playerService)
+        public ExplosiveKittensHub(
+            //IGamePlayerService playerService
+            )
         {
             string a = "";
         }
 
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             var a = Context.ConnectionId;
             await base.OnConnectedAsync();
@@ -33,26 +35,26 @@ namespace ExplosiveKittensAPI.Hub
         }
 
 
-        public async Task CreateGame(GameType type, Guid userId)
-        {
-            await playerService.CreateAsync(type, userId);
-        }
+        //public async Task CreateGame(GameType type, Guid userId)
+        //{
+        //    await playerService.CreateAsync(type, userId);
+        //}
 
-        public async Task<Guid?> GetGameByUserId(Guid userId, GameType gameType)
-        {
-            return await playerService.GetGameByUserId(userId, gameType);
-        }
-        public void RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId)
-        {
-            playerService.RestoreGamePlayerConnection(gameType,gameId, userId, connectionId);
-        }
-        public void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId)
-        {
-            playerService.AddGamePlayer(gameType, gameId, userId, connectionId);
-        }
-        public void RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId)
-        {
-            playerService.RemoveGamePlayer(gameType, gameId, userId);
-        }
+        //public async Task<Guid?> GetGameByUserId(Guid userId, GameType gameType)
+        //{
+        //    return await playerService.GetGameByUserId(userId, gameType);
+        //}
+        //public void RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId)
+        //{
+        //    playerService.RestoreGamePlayerConnection(gameType,gameId, userId, connectionId);
+        //}
+        //public void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId)
+        //{
+        //    playerService.AddGamePlayer(gameType, gameId, userId, connectionId);
+        //}
+        //public void RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId)
+        //{
+        //    playerService.RemoveGamePlayer(gameType, gameId, userId);
+        //}
     }                      
  }
