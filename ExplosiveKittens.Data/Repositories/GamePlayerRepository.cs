@@ -14,12 +14,5 @@ namespace ExplosiveKittens.Data.Repositories
         {
 
         }
-
-        //public async Task<string> Create()
-        //{
-        //    var gameid = Guid.NewGuid().ToString();
-        //    Game newGame = new Game() { }
-        //    await _repo.InsertAsync(x => x.GameId == gameId);
-        //}
     }
 }

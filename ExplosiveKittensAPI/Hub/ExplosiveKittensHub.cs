@@ -26,8 +26,6 @@ namespace ExplosiveKittensAPI.Hub
         public override Task OnConnectedAsync()
         {
             var a = Context.ConnectionId;
-            return base.OnDisconnectedAsync(null);
-
             return base.OnConnectedAsync();
         }
 

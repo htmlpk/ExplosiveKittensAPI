@@ -5,6 +5,7 @@ using Redis.OM.Searching;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ExplosiveKittens.Data.Repositories
 {
@@ -21,6 +22,16 @@ namespace ExplosiveKittens.Data.Repositories
         public virtual  IList<T> GetBy(Func<T,bool> predicate)
         {
             return _repo.Where(predicate).ToList();
+        }
+
+        public virtual async Task<string> CreateAsync(T entity)
+        {
+            return await _repo.InsertAsync(entity);
+        }
+
+        public virtual async Task UpdateAsync(T entity)
+        {
+            await _repo.UpdateAsync(entity);
         }
     }
 }
