@@ -22,6 +22,6 @@ namespace ExplosiveKittens.Business.Services
             return game?.Id;
         }
 
-        public async Task<Game> Create(GameType)
+        //public async Task<Game> Create(GameType type, Guid userId)
     }
 }
