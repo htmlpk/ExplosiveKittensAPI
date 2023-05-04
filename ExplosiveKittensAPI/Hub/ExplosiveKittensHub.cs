@@ -1,24 +1,22 @@
-﻿using ExplosiveKittens.VewModels;
+﻿using ExplosiveKittens.Business.Interfaces;
+using ExplosiveKittens.Data.Enums;
+using ExplosiveKittens.VewModels;
 using Microsoft.AspNetCore.SignalR;
-using Newtonsoft.Json;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 
 namespace ExplosiveKittensAPI.Hub
 {
 
     public interface ISomeHub
     {
-
         Task qse(CardViewModel data);
         Task SomeMethodB(object dss);
-
-        Task BroadcastChartData(Card data);
     }
 
     public class ExplosiveKittensHub : Hub<ISomeHub>
     {
-        public ExplosiveKittensHub()
+
+        private readonly IGamePlayerService playerService;
+        public ExplosiveKittensHub(IGamePlayerService playerService)
         {
             string a = "";
         }
@@ -26,32 +24,35 @@ namespace ExplosiveKittensAPI.Hub
         public override Task OnConnectedAsync()
         {
             var a = Context.ConnectionId;
-            return base.OnConnectedAsync();
+            await base.OnConnectedAsync();
         }
 
-        public Task qwerty(CardViewModel data)
+        public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            return Clients.All.qse(data);
+           await base.OnDisconnectedAsync(exception);
         }
 
 
-        [HubMethodName("SendMessageToUser")]
-        public Task SomeMethodB(Card data)
+        public async Task CreateGame(GameType type, Guid userId)
         {
-            return Clients.All.SomeMethodB(data);
+            await playerService.CreateAsync(type, userId);
         }
 
-        public Task BroadcastChartData(Card data)
+        public async Task<Guid?> GetGameByUserId(Guid userId, GameType gameType)
         {
-            var a = data;
-            return Clients.All.BroadcastChartData(a);
-            //return Clients.All.SendAsync("broadcastchartdata", data);
+            return await playerService.GetGameByUserId(userId, gameType);
         }
-    }
-
+        public void RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId)
+        {
+            playerService.RestoreGamePlayerConnection(gameType,gameId, userId, connectionId);
+        }
+        public void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId)
+        {
+            playerService.AddGamePlayer(gameType, gameId, userId, connectionId);
+        }
+        public void RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId)
+        {
+            playerService.RemoveGamePlayer(gameType, gameId, userId);
+        }
+    }                      
  }
-
-public class Card
-{
-    public string Name { get; set; }
-}

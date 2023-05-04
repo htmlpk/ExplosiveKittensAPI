@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExplosiveKittens.Business.Services
 {
-    internal class GamePlayerService: IGamePlayerService
+    public class GamePlayerService: IGamePlayerService
     {
         private GamePlayerRepository _gamePlayerCacheRepo;
         public GamePlayerService(GamePlayerRepository repo)
@@ -23,14 +23,14 @@ namespace ExplosiveKittens.Business.Services
             return game?.Id;
         }
 
-        public async Task<Game> Create(GameType type, Guid userId)
+        public async Task<Game> CreateAsync(GameType type, Guid userId)
         {
-            var game =  new Game() { Id = Guid.NewGuid(), Players = new List<Player>() { new Player() { Id = userId, Order = 1 } };
+            var game = new Game() { Id = Guid.NewGuid(), Players = new List<Player>() { new Player() { Id = userId, Order = 1 } } };
             await _gamePlayerCacheRepo.CreateAsync(game);
             return game;
         }
 
-        public void RestoreGamePlayerConnection(GameType gameType,Guid gameId,Guid userId,string connectionId)
+        public async void RestoreGamePlayerConnection(GameType gameType,Guid gameId,Guid userId,string connectionId)
         {
             Game game = _gamePlayerCacheRepo.GetBy(x => x.Id.Equals(gameId)).FirstOrDefault();
             if(game == null)
@@ -39,6 +39,7 @@ namespace ExplosiveKittens.Business.Services
             }
             Player player = game.Players.Where(x=>x.UserId.Equals(userId)).FirstOrDefault();
             player.ConnectionId = connectionId;
+            await _gamePlayerCacheRepo.UpdateAsync(game);
         }
 
         public async void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId)

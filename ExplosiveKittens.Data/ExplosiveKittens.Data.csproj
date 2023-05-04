@@ -106,6 +106,7 @@
     <Compile Include="Entities\Deck.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Enums\GameType.cs" />
     <Compile Include="Enums\KittenType.cs" />
     <Compile Include="Enums\PlayerStatusType.cs" />
     <Compile Include="Interfaces\Base\IBaseRepository.cs" />
