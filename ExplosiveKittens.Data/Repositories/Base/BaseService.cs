@@ -19,9 +19,9 @@ namespace ExplosiveKittens.Data.Repositories
             _repo = (RedisCollection<T>)provider.RedisCollection<T>();
         }
 
-        public virtual  IList<T> GetBy(Func<T,bool> predicate)
+        public virtual async Task<IList<T>> GetByAsync(Func<T,bool> predicate)
         {
-            return _repo.Where(predicate).ToList();
+            return await Task.FromResult(_repo.Where(predicate).ToList());
         }
 
         public virtual async Task<string> CreateAsync(T entity)

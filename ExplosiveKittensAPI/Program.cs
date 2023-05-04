@@ -2,6 +2,7 @@ using ExplosiveKittens.Business;
 using ExplosiveKittens.Business.HostedServices;
 using ExplosiveKittens.Business.Interfaces;
 using ExplosiveKittensAPI.Hub;
+using Microsoft.Extensions.DependencyInjection;
 using Redis.OM;
 using Redis.OM.Contracts;
 
@@ -17,10 +18,13 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowCredentials());
 });
-builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
-builder.Services.AddHostedService<IHostedService,IndexCreationService>();
-builder.Services.AddSingleton(new RedisConnectionProvider(builder.Configuration["REDIS_CONNECTION_STRING"]));
+
+Startup.ConfigureRepositories(builder.Services);
 Startup.ConfigureServices(builder.Services);
+builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
+builder.Services.AddHostedService<IndexCreationService>();
+builder.Services.AddSingleton(new RedisConnectionProvider(builder.Configuration["REDIS_CONNECTION_STRING"]));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

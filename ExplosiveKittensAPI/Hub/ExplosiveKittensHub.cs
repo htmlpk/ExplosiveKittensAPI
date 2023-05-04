@@ -1,4 +1,5 @@
 ﻿using ExplosiveKittens.Business.Interfaces;
+using ExplosiveKittens.Data.Entities;
 using ExplosiveKittens.Data.Enums;
 using ExplosiveKittens.VewModels;
 using Microsoft.AspNetCore.SignalR;
@@ -10,6 +11,7 @@ namespace ExplosiveKittensAPI.Hub
     {
         Task qse(CardViewModel data);
         Task SomeMethodB(object dss);
+        Task Notify(Game game);
     }
 
     public class ExplosiveKittensHub : Hub<ISomeHub>
@@ -17,10 +19,10 @@ namespace ExplosiveKittensAPI.Hub
 
         private readonly IGamePlayerService playerService;
         public ExplosiveKittensHub(
-            //IGamePlayerService playerService
+            IGamePlayerService playerService
             )
         {
-            string a = "";
+            this.playerService = playerService;
         }
 
         public override async Task OnConnectedAsync()
@@ -34,27 +36,39 @@ namespace ExplosiveKittensAPI.Hub
            await base.OnDisconnectedAsync(exception);
         }
 
+        [HubMethodName("create-game")]
+        public async Task<Game> CreateGame(GameType type, Guid userId)
+        {
+            var connectionId = Context.ConnectionId;
+            var game = await playerService.CreateAsync(type, userId, connectionId);
+            await Clients.AllExcept(connectionId).Notify(game);
+            return game;
+        }
 
-        //public async Task CreateGame(GameType type, Guid userId)
-        //{
-        //    await playerService.CreateAsync(type, userId);
-        //}
+        [HubMethodName("get-game-by-user-id")]
+        public async Task<Guid?> GetGameByUserId(Guid userId, GameType gameType)
+        {
+            return await playerService.GetGameByUserId(userId, gameType);
+        }
 
-        //public async Task<Guid?> GetGameByUserId(Guid userId, GameType gameType)
-        //{
-        //    return await playerService.GetGameByUserId(userId, gameType);
-        //}
-        //public void RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId)
-        //{
-        //    playerService.RestoreGamePlayerConnection(gameType,gameId, userId, connectionId);
-        //}
-        //public void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId)
-        //{
-        //    playerService.AddGamePlayer(gameType, gameId, userId, connectionId);
-        //}
-        //public void RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId)
-        //{
-        //    playerService.RemoveGamePlayer(gameType, gameId, userId);
-        //}
+        [HubMethodName("restore-game-player-connection")]
+        public async Task RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId)
+        {
+            var connectionId = Context.ConnectionId;
+            await playerService.RestoreGamePlayerConnection(gameType, gameId, userId, connectionId);
+        }
+
+        [HubMethodName("add-game-player")]
+        public async Task AddGamePlayer(GameType gameType, Guid gameId, Guid userId)
+        {
+            var connectionId = Context.ConnectionId;
+            await playerService.AddGamePlayer(gameType, gameId, userId, connectionId);
+        }
+
+        [HubMethodName("remove-game-player")]
+        public async Task RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId)
+        {
+            await playerService.RemoveGamePlayer(gameType, gameId, userId);
+        }
     }                      
  }

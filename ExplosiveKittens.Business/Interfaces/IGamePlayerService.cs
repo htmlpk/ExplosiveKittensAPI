@@ -2,17 +2,18 @@
 using ExplosiveKittens.Data.Enums;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace ExplosiveKittens.Business.Interfaces
 {
     public interface IGamePlayerService
     {
 
-        Task<Game> CreateAsync(GameType type, Guid userId);
+        Task<Game> CreateAsync(GameType type, Guid userId, string connectionId);
         Task<Guid?> GetGameByUserId(Guid userId, GameType gameType);
-        void RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId);
-        void AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId);
-        void RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId);
-
+        Task RestoreGamePlayerConnection(GameType gameType, Guid gameId, Guid userId, string connectionId);
+        Task AddGamePlayer(GameType gameType, Guid gameId, Guid userId, string connectionId);
+        Task RemoveGamePlayer(GameType gameType, Guid gameId, Guid userId);
+        Task<List<string>> GetGamePlayersConnectionIds(GameType gameType, Guid gameId);
     }
 }
